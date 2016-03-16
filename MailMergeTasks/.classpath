@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/xml-apis-1.0.b2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/xmlbeans-2.3.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/jsoup-1.8.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/javax.mail.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
