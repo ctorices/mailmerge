@@ -27,7 +27,8 @@ public class SendEmailTest
 				return new PasswordAuthentication(userName, pass);
 			}
 		});
-		
+
+
 		try{
 			// Create a default MimeMessage object.
 			MimeMessage message = new MimeMessage(session);
@@ -36,7 +37,7 @@ public class SendEmailTest
 			message.setFrom(new InternetAddress("amandamc727@gmail.com"));
 
 			// Set To: header field of the header.
-			  message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("ctorices@emich.edu, amccart8@emich.edu, fmahmood@emich.edu, cgallari@emich.edu, gduong@emich.edu"));
+			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("ctorices@emich.edu, amccart8@emich.edu, fmahmood@emich.edu, cgallari@emich.edu, gduong@emich.edu"));
 
 			// Set Subject: header field
 			message.setSubject("Hello.....Its Me");
@@ -50,6 +51,20 @@ public class SendEmailTest
 		}catch (MessagingException mex) {
 			mex.printStackTrace();
 		}
+
+	}
+
+	private static boolean validateEmail(String email)
+	{
+		boolean isValid = false;
+		try {
+			InternetAddress internetAddress = new InternetAddress(email);
+			internetAddress.validate();
+			isValid = true;
+		} catch (AddressException e) {
+			System.out.println("Invalid email has been entered");
+		}
+		return isValid;
 	}
 }
 
