@@ -1,4 +1,3 @@
-import java.awt.List;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,12 +11,16 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ParseExcel {
 	
-	public static void main(String [] args){
-		
-		ArrayList<String[]> excelData = new ArrayList<String[]>();
+	private ArrayList<ArrayList<String>> excelData;
+	
+	public ParseExcel(){
+		excelData = new ArrayList<ArrayList<String>>();
+	}
+	
+	public ArrayList<ArrayList<String>> parseExcelData(){
 	
 		try {
-
+			
 			File myFile = new File("Book1.xlsx"); 
 			FileInputStream spreadSheet = new FileInputStream(myFile);
 
@@ -25,31 +28,41 @@ public class ParseExcel {
 			
 			XSSFSheet mySheet = myWorkBook.getSheetAt(0);
 			Iterator<Row> rowIterator = mySheet.iterator();
-			
+			int i = -1;
 			while (rowIterator.hasNext()) { 
+				
 				Row row = rowIterator.next();
+				i += 1;
 				Iterator<Cell> cellIterator = row.cellIterator(); 
+				excelData.add(new ArrayList<String>());
+				
 				while (cellIterator.hasNext()) {
 					Cell cell = cellIterator.next();
 					switch (cell.getCellType()) {
-						case Cell.CELL_TYPE_STRING: 
-							//System.out.print(cell.getStringCellValue() + "\t");  
-							excelData.add(new String[] {cell.getStringCellValue()});
-							break;
+						case Cell.CELL_TYPE_STRING:
+							excelData.get(i).add(cell.getStringCellValue()); break;
 						case Cell.CELL_TYPE_NUMERIC: 
-							System.out.print(cell.getNumericCellValue() + "\t"); break;
+							break;
 						case Cell.CELL_TYPE_BOOLEAN: 
-							System.out.print(cell.getBooleanCellValue() + "\t"); break; 
+							break; 
 						default : 
 					} 
 				}
-				System.out.println("");
 			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		for(int k = 0; k < excelData.size(); k++){
+			for (int j = 0; j < excelData.get(k).size(); j++){
+				System.out.print(excelData.get(k).get(j) + " ");
+			}
+			System.out.println();
+		}
+		
+		return excelData;
 
 	}
-
+	
 }
