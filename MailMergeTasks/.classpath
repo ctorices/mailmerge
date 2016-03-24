@@ -2,20 +2,20 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="/Users/geoffduong/Documents/mailmerge/MailMergeTasks/libs/commons-codec-1.5.jar"/>
-	<classpathentry kind="lib" path="/Users/geoffduong/Documents/mailmerge/MailMergeTasks/libs/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="/Users/geoffduong/Documents/mailmerge/MailMergeTasks/libs/fr.opensagres.xdocreport.itext.extension-1.0.4.jar"/>
-	<classpathentry kind="lib" path="/Users/geoffduong/Documents/mailmerge/MailMergeTasks/libs/itext-2.1.7.jar"/>
-	<classpathentry kind="lib" path="/Users/geoffduong/Documents/mailmerge/MailMergeTasks/libs/javax.mail.jar"/>
-	<classpathentry kind="lib" path="/Users/geoffduong/Documents/mailmerge/MailMergeTasks/libs/jsoup-1.8.3.jar"/>
-	<classpathentry kind="lib" path="/Users/geoffduong/Documents/mailmerge/MailMergeTasks/libs/ooxml-schemas-1.1.jar"/>
-	<classpathentry kind="lib" path="/Users/geoffduong/Documents/mailmerge/MailMergeTasks/libs/org.apache.poi.xwpf.converter.core-1.0.4.jar"/>
-	<classpathentry kind="lib" path="/Users/geoffduong/Documents/mailmerge/MailMergeTasks/libs/org.apache.poi.xwpf.converter.pdf-1.0.4.jar"/>
-	<classpathentry kind="lib" path="/Users/geoffduong/Documents/mailmerge/MailMergeTasks/libs/org.apache.poi.xwpf.converter.xhtml-1.0.4.jar"/>
-	<classpathentry kind="lib" path="/Users/geoffduong/Documents/mailmerge/MailMergeTasks/libs/poi-3.9.jar"/>
-	<classpathentry kind="lib" path="/Users/geoffduong/Documents/mailmerge/MailMergeTasks/libs/poi-ooxml-3.9.jar"/>
-	<classpathentry kind="lib" path="/Users/geoffduong/Documents/mailmerge/MailMergeTasks/libs/stax-api-1.0.1.jar"/>
-	<classpathentry kind="lib" path="/Users/geoffduong/Documents/mailmerge/MailMergeTasks/libs/xml-apis-1.0.b2.jar"/>
-	<classpathentry kind="lib" path="/Users/geoffduong/Documents/mailmerge/MailMergeTasks/libs/xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/commons-codec-1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/fr.opensagres.xdocreport.itext.extension-1.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/itext-2.1.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/ooxml-schemas-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/org.apache.poi.xwpf.converter.core-1.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/org.apache.poi.xwpf.converter.pdf-1.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/org.apache.poi.xwpf.converter.xhtml-1.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/poi-3.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/poi-ooxml-3.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/stax-api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/xml-apis-1.0.b2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/jsoup-1.8.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Amanda/workspace/MailMergeTasks/libs/javax.mail.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
