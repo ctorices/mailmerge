@@ -3,7 +3,6 @@
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.*;
 
 public class SendEmailTest
 {
@@ -12,7 +11,7 @@ public class SendEmailTest
 		//place holders not use your real info
 		final String userName = "name@gmail.com";
 		final String pass = "password";
-
+		
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.socketFactory.port", "465");
@@ -21,13 +20,12 @@ public class SendEmailTest
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.port", "465");
 
-		Session session = Session.getDefaultInstance(props,
-				new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(userName, pass);
-			}
-		});
-
+		       Session session = Session.getDefaultInstance(props,
+		           new javax.mail.Authenticator() {
+		               protected PasswordAuthentication getPasswordAuthentication() {
+		                   return new PasswordAuthentication(userName, pass);
+		               }
+		           });
 
 		try{
 			// Create a default MimeMessage object.
@@ -37,7 +35,7 @@ public class SendEmailTest
 			message.setFrom(new InternetAddress("amandamc727@gmail.com"));
 
 			// Set To: header field of the header.
-			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("ctorices@emich.edu, amccart8@emich.edu, fmahmood@emich.edu, cgallari@emich.edu, gduong@emich.edu"));
+			  message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("ctorices@emich.edu, amccart8@emich.edu, fmahmood@emich.edu, cgallari@emich.edu, gduong@emich.edu"));
 
 			// Set Subject: header field
 			message.setSubject("Hello.....Its Me");
@@ -51,20 +49,6 @@ public class SendEmailTest
 		}catch (MessagingException mex) {
 			mex.printStackTrace();
 		}
-
-	}
-
-	private static boolean validateEmail(String email)
-	{
-		boolean isValid = false;
-		try {
-			InternetAddress internetAddress = new InternetAddress(email);
-			internetAddress.validate();
-			isValid = true;
-		} catch (AddressException e) {
-			System.out.println("Invalid email has been entered");
-		}
-		return isValid;
 	}
 }
 
