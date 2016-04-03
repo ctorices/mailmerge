@@ -17,14 +17,12 @@ public class DocxToHtml {
 		
 		InputStream in;
 		try {
-			// 1) Load DOCX into XWPFDocument
+		
 			in = new FileInputStream(new File("Internet2 Tempe Lodging Confirmation Email.docx"));
 			XWPFDocument document = new XWPFDocument(in);
-
-			// 2) Prepare XHTML options (here we set the IURIResolver to load images from a "word/media" folder)
+			
 			XHTMLOptions options = XHTMLOptions.create().URIResolver(new FileURIResolver(new File("word/media")));
 
-			// 3) Convert XWPFDocument to XHTML
 			OutputStream out = new FileOutputStream(new File("Internet2 Tempe Lodging Confirmation Email.html"));
 			XHTMLConverter.getInstance().convert(document, out, options);	
 

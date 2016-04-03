@@ -1,17 +1,26 @@
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 public class ParseHTML {
+	
 
-	public static void main(String [] args){
+	private ParseExcel parseExcel;
+	private ArrayList<ArrayList<String>> data;
+	private Stack theStack;
+	
+	
+	public ParseHTML(){
+		parseExcel = new ParseExcel();
+		theStack = new Stack();
+	}
+	
+		
+	public Stack getEmailLetterStack(){
 
 		File input = new File("Internet2 Tempe Lodging Confirmation Email.html");
 
@@ -19,10 +28,7 @@ public class ParseHTML {
 			
 			String letter = "";
 			String email = "";
-
-			ParseExcel parseExcel = new ParseExcel();
-			ArrayList<ArrayList<String>> data = parseExcel.parseExcelData();
-			Stack theStack = new Stack();	
+			data = parseExcel.parseExcelData();
 
 			int i = 0;
 			for (int k = 1; k < data.size(); k++){
@@ -35,23 +41,24 @@ public class ParseHTML {
 						email = data.get(k).get(j);
 					}
 					letter = letter.replace(data.get(i).get(j), data.get(k).get(j));
+					//To clean up MS office encoding
+					letter = letter.replace("’", "&#8217;");
+					letter = letter.replace("“", "&#8220;");
+					letter = letter.replace("”", "&#8221;");
 				}
 				
 				LetterEmailPair letterEmailPair = new LetterEmailPair(letter,email);
 				theStack.push(letterEmailPair);
 			}
 
-			System.out.println(theStack.toString());
-
-
-			String outputFile = "filename.html";
-			BufferedWriter htmlWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile)));
-			htmlWriter.write(letter);
-
-			htmlWriter.close();
+			//System.out.println(theStack.toString());
+		
+			
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		return theStack;
 	}
 }
