@@ -38,7 +38,7 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 		
 		// EagleMerge logo top right
 		JLabel label = new JLabel("");
-		Image img = new ImageIcon(this.getClass().getResource("/EagleMergeThumbnail.png")).getImage();
+		Image img = new ImageIcon(this.getClass().getResource("/resources/EagleMergeThumbnail.png")).getImage();
 		label.setIcon(new ImageIcon(img));
 		label.setBounds(711, 16, 308, 53);
 		contentPane.add(label);
@@ -59,13 +59,13 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 		contentPane.add(lblCopyright);
 		
 		JLabel letters = new JLabel("");
-		Image imgLetters = new ImageIcon(this.getClass().getResource("/letters.png")).getImage();
+		Image imgLetters = new ImageIcon(this.getClass().getResource("/resources/letters.png")).getImage();
 		letters.setIcon(new ImageIcon(imgLetters));
 		letters.setBounds(55, 192, 308, 104);
 		contentPane.add(letters);
 		
 		JLabel letters2 = new JLabel("");
-		Image imgLetters2 = new ImageIcon(this.getClass().getResource("/letters.png")).getImage();
+		Image imgLetters2 = new ImageIcon(this.getClass().getResource("/resources/letters.png")).getImage();
 		letters2.setIcon(new ImageIcon(imgLetters2));
 		letters2.setBounds(684, 192, 308, 104);
 		contentPane.add(letters2);
@@ -76,7 +76,7 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 		contentPane.add(lblSendMerge);
 		
 		JLabel five = new JLabel("");
-		Image img5 = new ImageIcon(this.getClass().getResource("/five.png")).getImage();
+		Image img5 = new ImageIcon(this.getClass().getResource("/resources/five.png")).getImage();
 		five.setIcon(new ImageIcon(img5));
 		five.setBounds(455, 104, 115, 104);
 		contentPane.add(five);

@@ -9,6 +9,9 @@ import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+
+import apple.laf.JRSUIUtils.Images;
+
 import javax.swing.JPasswordField;
 
 public class GUI_Welcome_Frame1 {
@@ -61,8 +64,8 @@ public class GUI_Welcome_Frame1 {
 		
 		// logo
 		JLabel label_1 = new JLabel("");
-		Image img = new ImageIcon(this.getClass().getResource("/EagleMerge.png")).getImage();
-		label_1.setIcon(new ImageIcon(img));
+		ImageIcon img = new ImageIcon(Images.class.getResource("/resources/EagleMerge.png"));
+		label_1.setIcon(img);
 		label_1.setBounds(210, 83, 630, 277);
 		frame.getContentPane().add(label_1);
 		
