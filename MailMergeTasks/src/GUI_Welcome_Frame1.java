@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
-import apple.laf.JRSUIUtils.Images;
+//import apple.laf.JRSUIUtils.Images;
 
 import javax.swing.JPasswordField;
 
