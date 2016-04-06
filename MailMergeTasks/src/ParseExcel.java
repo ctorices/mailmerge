@@ -21,7 +21,7 @@ public class ParseExcel {
 
 		try {
 
-			File myFile = new File("BulkTest.xlsx"); 
+			File myFile = new File("Book1.xlsx"); 
 			FileInputStream spreadSheet = new FileInputStream(myFile);
 
 			XSSFWorkbook myWorkBook = new XSSFWorkbook(spreadSheet);

@@ -16,7 +16,7 @@ public class SendEmail {
 		Stack letters = parseHtml.getEmailLetterStack();
 		
 		//login info
-		final String userName = "amandamc727@gmail.com";
+		final String userName = "";
 		final String pass = "";
 
 		//using googles SMTP server to send email's
@@ -45,11 +45,11 @@ public class SendEmail {
 				MimeMessage message = new MimeMessage(session);
 	
 				//Set From
-				message.setFrom(new InternetAddress("amandamc727@gmail.com"));
+				message.setFrom(new InternetAddress("Geoffrey Duong <duongg4848@gmail.com>"));
 				
 				//Set reply to 
 				message.setReplyTo(new javax.mail.Address[] {
-						new javax.mail.internet.InternetAddress("amandamc727@gmail.com")
+						new javax.mail.internet.InternetAddress("duongg4848@gmail.com")
 				});
 	
 				//Send to
