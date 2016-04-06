@@ -42,11 +42,12 @@ public class ParseHTML {
 					}
 					letter = letter.replace(data.get(i).get(j), data.get(k).get(j));
 					//To clean up MS office encoding
-					letter = letter.replace("’", "&#8217;");
-					letter = letter.replace("“", "&#8220;");
-					letter = letter.replace("”", "&#8221;");
+					
+					letter = letter.replace("â€™", "&#39;");
+					letter = letter.replace("â€œ", "&#8220;");
+					letter = letter.replace("â€", "&#8221;");
+					
 				}
-				
 				LetterEmailPair letterEmailPair = new LetterEmailPair(letter,email);
 				theStack.push(letterEmailPair);
 			}
