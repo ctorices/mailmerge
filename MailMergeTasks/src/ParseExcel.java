@@ -13,15 +13,15 @@ public class ParseExcel {
 
 	private ArrayList<ArrayList<String>> excelData;
 
-	public ParseExcel(){
+	public ParseExcel(String excel){
 		excelData = new ArrayList<ArrayList<String>>();
 	}
 
-	public ArrayList<ArrayList<String>> parseExcelData(){
+	public ArrayList<ArrayList<String>> parseExcelData(String excel){
 
 		try {
 
-			File myFile = new File("Book1.xlsx"); 
+			File myFile = new File(excel); 
 			FileInputStream spreadSheet = new FileInputStream(myFile);
 
 			XSSFWorkbook myWorkBook = new XSSFWorkbook(spreadSheet);
@@ -55,14 +55,14 @@ public class ParseExcel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+/*
 		for(int k = 0; k < excelData.size(); k++){
 			for (int j = 0; j < excelData.get(k).size(); j++){
 				System.out.print(excelData.get(k).get(j) + " ");
 			}
 			System.out.println();
 		}
-
+*/
 		return excelData;
 
 	}

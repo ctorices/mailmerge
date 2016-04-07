@@ -14,27 +14,28 @@ public class ParseHTML {
 	private Stack theStack;
 	
 	
-	public ParseHTML(){
-		parseExcel = new ParseExcel();
+	public ParseHTML(String excel){
+		parseExcel = new ParseExcel(excel);
 		theStack = new Stack();
 	}
 	
 		
-	public Stack getEmailLetterStack(){
+	public Stack getEmailLetterStack(String excel, String doc){
 
-		File input = new File("Internet2 Tempe Lodging Confirmation Email.html");
+		DocxToHtml converter = new DocxToHtml();
+		File input = converter.DocxToHtml(doc);
 
 		try {
 			
 			String letter = "";
 			String email = "";
-			data = parseExcel.parseExcelData();
+			data = parseExcel.parseExcelData(excel);
 
 			int i = 0;
 			for (int k = 1; k < data.size(); k++){
 
-				Document doc = Jsoup.parse(input, "UTF-8");
-				letter = doc.toString();
+				Document parser = Jsoup.parse(input, "UTF-8");
+				letter = parser.toString();
 
 				for (int j = 0; j < data.get(k).size(); j++){
 					if (data.get(i).get(j).equalsIgnoreCase("email")){

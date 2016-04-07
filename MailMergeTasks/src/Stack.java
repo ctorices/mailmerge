@@ -34,6 +34,16 @@ public class Stack {
 		else
 			throw new StackEmptyException();
 	}
+	
+	public String getEmail(int index)
+	{
+		return stack.get(index).getEmail();
+	}
+	
+	public String getLetter(int index)
+	{
+		return stack.get(index).getLetter();
+	}
 
 	public String toString(){
 		return stack.toString();
