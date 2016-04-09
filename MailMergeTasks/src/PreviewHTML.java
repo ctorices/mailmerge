@@ -1,4 +1,4 @@
-
+package mail;
 //Imported libraries
 import java.awt.BorderLayout;
 import java.awt.Dimension;

@@ -5,6 +5,9 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -24,7 +27,7 @@ String doc = "";
 
 
 
-GUI_MergePreview_Frame3 docFrame = new GUI_MergePreview_Frame3(excel, doc );
+
 /*******************************************************************************
  * The following snippet of code must be inserted into GUI_MergePreview_Frame3 
  * file in order to read the strings excel and doc (The files paths). Line of 
@@ -40,10 +43,11 @@ GUI_MergePreview_Frame3 docFrame = new GUI_MergePreview_Frame3(excel, doc );
 
 */
 	public static void main(String[] args) {
+                
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI_DocAndExcelSelect_Frame2 frame = new GUI_DocAndExcelSelect_Frame2();
+					GUI_DocAndExcelSelect_Frame2 frame = new GUI_DocAndExcelSelect_Frame2(Transport.class.newInstance(), Session.class.newInstance());
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -129,16 +133,17 @@ GUI_MergePreview_Frame3 docFrame = new GUI_MergePreview_Frame3(excel, doc );
                 
         }
         
-        public void nextFrame(){
+        public void nextFrame(Transport transport, Session session){
             // go to Merge confirmation page
 		JButton btnNewButton = new JButton("Merge!");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				contentPane.setVisible(false);
-				GUI_MergePreview_Frame3 MergeConfirmation = new GUI_MergePreview_Frame3();
+				
                                 System.out.println( excel );
                                 System.out.println( doc );
+                                GUI_MergePreview_Frame3 MergeConfirmation = new GUI_MergePreview_Frame3(excel, doc, transport, session);
 				MergeConfirmation.setVisible(true);
 			}
 		});
@@ -192,7 +197,7 @@ GUI_MergePreview_Frame3 docFrame = new GUI_MergePreview_Frame3(excel, doc );
                
                 
         }
-	public GUI_DocAndExcelSelect_Frame2() {
+	public GUI_DocAndExcelSelect_Frame2(Transport transport, Session session) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 50, 1056, 700);
 		contentPane = new JPanel();
@@ -212,7 +217,7 @@ GUI_MergePreview_Frame3 docFrame = new GUI_MergePreview_Frame3(excel, doc );
 		
               
 		
-		nextFrame();
+		nextFrame(transport, session);
 		
 	}
 }

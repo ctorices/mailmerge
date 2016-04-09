@@ -68,7 +68,7 @@ public class GUI_Welcome_Frame1 {
                 new javax.mail.Authenticator() {
 
             @Override
-
+            
             protected PasswordAuthentication getPasswordAuthentication() {
 
                 return new PasswordAuthentication(username, password);
@@ -81,14 +81,16 @@ public class GUI_Welcome_Frame1 {
 
             Transport transport = session.getTransport();
             transport.connect();
-/**
-            
+            System.out.println(transport.getURLName().getUsername());
+
+            /**
             //Default MimeMessage object
             MimeMessage message = new MimeMessage(session);
 
             //Set From
             message.setFrom(new InternetAddress(username));
-
+            
+            
             //Send to
             message.addRecipient(Message.RecipientType.TO, new InternetAddress("amandamc727@gmail.com"));
 
@@ -103,7 +105,7 @@ public class GUI_Welcome_Frame1 {
             System.out.println("Sent message successfully....");
 */
                 
-            nextFrame();
+            nextFrame(transport, session);
             
             //transport.close();
 
@@ -190,10 +192,10 @@ public class GUI_Welcome_Frame1 {
         frame.getContentPane().add(passwordField);
     }
 
-    private void nextFrame() {
+    private void nextFrame(Transport transport, Session session) {
         // currently just goes to next frame with no validation
         frame.dispose();
-        GUI_DocAndExcelSelect_Frame2 DocAndExcelSelect = new GUI_DocAndExcelSelect_Frame2();
+        GUI_DocAndExcelSelect_Frame2 DocAndExcelSelect = new GUI_DocAndExcelSelect_Frame2(transport, session);
         DocAndExcelSelect.setVisible(true);
     }
 }
