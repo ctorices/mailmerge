@@ -1,4 +1,4 @@
-package mail;
+
 
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -14,6 +14,8 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -141,7 +143,7 @@ public class GUI_Welcome_Frame1 {
 
         // logo
         JLabel label_1 = new JLabel("");
-        Image img = new ImageIcon(this.getClass().getResource("/EagleMerge.png")).getImage();
+        Image img = new ImageIcon(this.getClass().getResource("/resources/EagleMerge.png")).getImage();
         label_1.setIcon(new ImageIcon(img));
         label_1.setBounds(210, 83, 630, 277);
         frame.getContentPane().add(label_1);
@@ -189,6 +191,15 @@ public class GUI_Welcome_Frame1 {
         passwordField = new JPasswordField();
         passwordField.setFont(new Font("Tahoma", Font.PLAIN, 18));
         passwordField.setBounds(455, 482, 299, 26);
+        Action action = new AbstractAction()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                authLogin();
+            }
+        };
+        passwordField.addActionListener(action);
         frame.getContentPane().add(passwordField);
     }
 
