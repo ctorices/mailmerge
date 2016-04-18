@@ -1,4 +1,4 @@
-package mail;
+
 public class LetterEmailPair {
 	
 	private final String letter;

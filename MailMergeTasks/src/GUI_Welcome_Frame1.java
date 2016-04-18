@@ -39,94 +39,9 @@ public class GUI_Welcome_Frame1 {
     }
 
     private JFrame frame;
-    private JTextField emailField;
-    private JPasswordField passwordField;
 
     public GUI_Welcome_Frame1() {
         initialize();
-    }
-
-    private void authLogin() {
-        String username = emailField.getText();
-        String temp = "";
-       
-        for(int i = 0; i < passwordField.getPassword().length; i++){
-            temp += passwordField.getPassword()[i];
-        }
-        String password = temp;
-        
-        
-        //System.out.println(username + " " + password);
-        Properties props = new Properties();
-        props.put("mail.smtp.ssl.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.socketFactory.port", "465");
-        props.put("mail.smtp.socketFactory.class",
-                "javax.net.ssl.SSLSocketFactory");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "465");
-
-        Session session = Session.getDefaultInstance(props,
-                new javax.mail.Authenticator() {
-
-            @Override
-            
-            protected PasswordAuthentication getPasswordAuthentication() {
-
-                return new PasswordAuthentication(username, password);
-
-            }
-        });
-        try {
-            
-            session.setDebug(true);
-
-            Transport transport = session.getTransport();
-            transport.connect();
-            System.out.println(transport.getURLName().getUsername());
-
-            /**
-            //Default MimeMessage object
-            MimeMessage message = new MimeMessage(session);
-
-            //Set From
-            message.setFrom(new InternetAddress(username));
-            
-            
-            //Send to
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress("amandamc727@gmail.com"));
-
-            //Subject
-            message.setSubject("Mail Merge Test");
-
-            //Set the HTML message
-            message.setText("This message was sent from Eagle Mail GUI :)");
-            //Send message
-            message.saveChanges();
-            transport.sendMessage(message, message.getAllRecipients());
-            System.out.println("Sent message successfully....");
-*/
-                
-            nextFrame(transport, session);
-            
-            //transport.close();
-
-        } catch (MessagingException mex) {
-            mex.printStackTrace();
-        }
-    }
-
-    private void loginButton() {
-        JButton loginButton = new JButton("Login");
-        // ADD EMAIL VALIDATION!!!!!!!!!!!!!!! *******************************
-        loginButton.setFont(new Font("Verdana", Font.PLAIN, 18));
-        loginButton.setBounds(455, 536, 166, 29);
-        frame.getContentPane().add(loginButton);
-
-        loginButton.addActionListener((ActionEvent arg0) -> {
-            authLogin();
-            //nextFrame();
-        });
     }
 
     private void initialize() {
@@ -149,12 +64,6 @@ public class GUI_Welcome_Frame1 {
         frame.getContentPane().add(label_1);
 
         copyrightField();
-
-        loginField();
-
-        passwordField();
-
-        loginButton();
     }
 
     private void copyrightField() {
@@ -163,50 +72,13 @@ public class GUI_Welcome_Frame1 {
         frame.getContentPane().add(lblCopyright);
     }
 
-    private void loginField() {
 
-        JLabel lblPleaseEnterYour = new JLabel("Please enter your login credentials");
-        lblPleaseEnterYour.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        lblPleaseEnterYour.setBounds(387, 376, 327, 20);
-        frame.getContentPane().add(lblPleaseEnterYour);
 
-        JLabel lblEmail = new JLabel("Email:");
-        lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        lblEmail.setBounds(358, 441, 69, 20);
-        frame.getContentPane().add(lblEmail);
-        emailField = new JTextField();
-        emailField.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        emailField.setBounds(455, 440, 299, 26);
-        frame.getContentPane().add(emailField);
-        emailField.setColumns(10);
-
-    }
-
-    private void passwordField() {
-        JLabel lblPassword = new JLabel("Password:");
-        lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        lblPassword.setBounds(323, 483, 117, 20);
-        frame.getContentPane().add(lblPassword);
-
-        passwordField = new JPasswordField();
-        passwordField.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        passwordField.setBounds(455, 482, 299, 26);
-        Action action = new AbstractAction()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                authLogin();
-            }
-        };
-        passwordField.addActionListener(action);
-        frame.getContentPane().add(passwordField);
-    }
-
-    private void nextFrame(Transport transport, Session session) {
+    private void nextFrame() {
         // currently just goes to next frame with no validation
         frame.dispose();
-        GUI_DocAndExcelSelect_Frame2 DocAndExcelSelect = new GUI_DocAndExcelSelect_Frame2(transport, session);
-        DocAndExcelSelect.setVisible(true);
+        //TEST
+       // GUI_DocAndExcelSelect_Frame2 DocAndExcelSelect = new GUI_DocAndExcelSelect_Frame2();
+      //  DocAndExcelSelect.setVisible(true);
     }
 }

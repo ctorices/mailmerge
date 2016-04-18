@@ -1,4 +1,4 @@
-package mail;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
@@ -28,24 +28,12 @@ public class GUI_MergePreview_Frame3 extends JFrame {
 	private Stack emailAndLetterStack;
 	private int emailIndex;
 	private String email;
-       
-	// for design purposes
-               
-	public Stack getEmailAndLetterStack() {
-		return emailAndLetterStack;
-	}
-
-	public void setEmailAndLetterStack(Stack emailAndLetterStack) {
-		this.emailAndLetterStack = emailAndLetterStack;
-	}
-
+	
 	public static void main(String[] args) {
-            String emailPath = "";
-            String docPath = "";
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI_MergePreview_Frame3 frame = new GUI_MergePreview_Frame3(emailPath, docPath, Transport.class.newInstance(), Session.class.newInstance());
+					GUI_MergePreview_Frame3 frame = new GUI_MergePreview_Frame3();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -54,12 +42,9 @@ public class GUI_MergePreview_Frame3 extends JFrame {
 		});
 	}
 
-	public GUI_MergePreview_Frame3(String excel, String doc, Transport transport, Session session) {
-                System.out.println(excel + "\n"+ doc);
-		//****************Create stack from doc file with emails and letters*******//
-		ParseHTML htmlParse = new ParseHTML(excel);
-		setEmailAndLetterStack(htmlParse.getEmailLetterStack(excel, doc));
+	public GUI_MergePreview_Frame3() {
 
+		emailAndLetterStack = GUI_DocAndExcelSelect_Frame2.parseHTML.getEmailLetterStack();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 50, 1056, 950);
@@ -70,11 +55,11 @@ public class GUI_MergePreview_Frame3 extends JFrame {
 
 		// EagleMerge logo top right
 		JLabel label = new JLabel("");
-		Image img = new ImageIcon(this.getClass().getResource("/EagleMergeThumbnail.png")).getImage();
+		Image img = new ImageIcon(this.getClass().getResource("/resources/EagleMergeThumbnail.png")).getImage();
 		label.setIcon(new ImageIcon(img));
 		label.setBounds(711, 16, 308, 53);
 		contentPane.add(label);
-                
+
 		// go to Sent confirmation page
 		JButton btnNewButton = new JButton("Confirm >>");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -85,7 +70,7 @@ public class GUI_MergePreview_Frame3 extends JFrame {
 				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 				setContentPane(contentPane);
 				contentPane.setLayout(null);
-				GUI_SendConfirmation_Frame4 SendConfirmation = new GUI_SendConfirmation_Frame4(transport,emailAndLetterStack, session);
+				GUI_SendConfirmation_Frame4 SendConfirmation = new GUI_SendConfirmation_Frame4();
 				SendConfirmation.setVisible(true);
 			}
 		});
@@ -146,19 +131,19 @@ public class GUI_MergePreview_Frame3 extends JFrame {
 		contentPane.add(lblNewLabel_1);
 
 		JLabel three = new JLabel("");
-		Image img3 = new ImageIcon(this.getClass().getResource("/three.png")).getImage();
+		Image img3 = new ImageIcon(this.getClass().getResource("/resources/three.png")).getImage();
 		three.setIcon(new ImageIcon(img3));
 		three.setBounds(130, 61, 125, 111);
 		contentPane.add(three);
 
 		JLabel four = new JLabel("");
-		Image img4 = new ImageIcon(this.getClass().getResource("/four.png")).getImage();
+		Image img4 = new ImageIcon(this.getClass().getResource("/resources/four.png")).getImage();
 		four.setIcon(new ImageIcon(img4));
 		four.setBounds(922, 483, 80, 61);
 		contentPane.add(four);
 
 	}
-	
+
 	public void displayLetter(JEditorPane pane)
 	{
 		email = emailAndLetterStack.getLetter(emailIndex);

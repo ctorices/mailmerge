@@ -1,4 +1,4 @@
-package mail;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,16 +13,17 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ParseExcel {
 
 	private ArrayList<ArrayList<String>> excelData;
+	GUI_DocAndExcelSelect_Frame2 frame2 = new GUI_DocAndExcelSelect_Frame2();
 
-	public ParseExcel(String excel){
+	public ParseExcel(){
 		excelData = new ArrayList<ArrayList<String>>();
 	}
 
-	public ArrayList<ArrayList<String>> parseExcelData(String excel){
+	public ArrayList<ArrayList<String>> parseExcelData(String ExcelPath){
 
 		try {
 
-			File myFile = new File(excel); 
+			File myFile = new File(ExcelPath); 
 			FileInputStream spreadSheet = new FileInputStream(myFile);
 
 			XSSFWorkbook myWorkBook = new XSSFWorkbook(spreadSheet);
@@ -56,14 +57,13 @@ public class ParseExcel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-/*
+		
 		for(int k = 0; k < excelData.size(); k++){
 			for (int j = 0; j < excelData.get(k).size(); j++){
 				System.out.print(excelData.get(k).get(j) + " ");
 			}
 			System.out.println();
 		}
-*/
 		return excelData;
 
 	}
