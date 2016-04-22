@@ -1,4 +1,4 @@
-package mail;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
@@ -70,7 +70,7 @@ public class GUI_MergePreview_Frame3 extends JFrame {
 
 		// EagleMerge logo top right
 		JLabel label = new JLabel("");
-		Image img = new ImageIcon(this.getClass().getResource("/EagleMergeThumbnail.png")).getImage();
+		Image img = new ImageIcon(this.getClass().getResource("/resources/EagleMergeThumbnail.png")).getImage();
 		label.setIcon(new ImageIcon(img));
 		label.setBounds(711, 16, 308, 53);
 		contentPane.add(label);
@@ -146,13 +146,13 @@ public class GUI_MergePreview_Frame3 extends JFrame {
 		contentPane.add(lblNewLabel_1);
 
 		JLabel three = new JLabel("");
-		Image img3 = new ImageIcon(this.getClass().getResource("/three.png")).getImage();
+		Image img3 = new ImageIcon(this.getClass().getResource("/resources/three.png")).getImage();
 		three.setIcon(new ImageIcon(img3));
 		three.setBounds(130, 61, 125, 111);
 		contentPane.add(three);
 
 		JLabel four = new JLabel("");
-		Image img4 = new ImageIcon(this.getClass().getResource("/four.png")).getImage();
+		Image img4 = new ImageIcon(this.getClass().getResource("/resources/four.png")).getImage();
 		four.setIcon(new ImageIcon(img4));
 		four.setBounds(922, 483, 80, 61);
 		contentPane.add(four);

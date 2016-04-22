@@ -1,4 +1,4 @@
-package mail;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class ParseHTML {
 	public Stack getEmailLetterStack(String excel, String doc){
 
 		DocxToHtml converter = new DocxToHtml();
-		File input = converter.DocxToHtml(doc);
+		File input = converter.convertDocxToHtml(doc);
 
 		try {
 			

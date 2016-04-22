@@ -1,4 +1,4 @@
-package mail;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,10 +14,8 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
 public class DocxToHtml {
 	
-	
-	public DocxToHtml(){};
 
-	public File DocxToHtml(String doc) {
+	public File convertDocxToHtml(String doc) {
 		
 		InputStream in;
 		File htmlFile = new File("converted.html");

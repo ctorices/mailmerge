@@ -1,4 +1,4 @@
-package mail;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
@@ -105,7 +105,7 @@ String doc = "";
         public void eagleLogo(){
             // EagleMerge logo top right
 		JLabel label = new JLabel("");
-		Image img = new ImageIcon(this.getClass().getResource("/EagleMergeThumbnail.png")).getImage();
+		Image img = new ImageIcon(this.getClass().getResource("/resources/EagleMergeThumbnail.png")).getImage();
 		label.setIcon(new ImageIcon(img));
 		label.setBounds(711, 16, 308, 53);
 		contentPane.add(label);
@@ -114,14 +114,14 @@ String doc = "";
 		
 		// Step 1 image
 		JLabel label_1 = new JLabel("");
-		Image one = new ImageIcon(this.getClass().getResource("/one.png")).getImage();
+		Image one = new ImageIcon(this.getClass().getResource("/resources/one.png")).getImage();
 		label_1.setIcon(new ImageIcon(one));
 		label_1.setBounds(68, 128, 109, 125);
 		contentPane.add(label_1);
 		
 		// Step 2 image
 		JLabel label_2 = new JLabel("");
-		Image two = new ImageIcon(this.getClass().getResource("/two.png")).getImage();
+		Image two = new ImageIcon(this.getClass().getResource("/resources/two.png")).getImage();
 		label_2.setIcon(new ImageIcon(two));
 		label_2.setBounds(68, 345, 109, 111);
 		contentPane.add(label_2);
