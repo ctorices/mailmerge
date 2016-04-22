@@ -1,9 +1,15 @@
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
@@ -13,18 +19,22 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.text.Document;
+import javax.swing.text.JTextComponent;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.JList;
 import javax.swing.JEditorPane;
+import javax.swing.JScrollBar;
 
 @SuppressWarnings("serial")
 public class GUI_MergePreview_Frame3 extends JFrame {
 
 	private JPanel contentPane;	
+	private JScrollPane scrollPane;
 	private Stack emailAndLetterStack;
 	private int emailIndex;
 	private String email;
@@ -93,8 +103,10 @@ public class GUI_MergePreview_Frame3 extends JFrame {
 
 		// ************************* PREVIEW PANE *********************
 		// preview pane set up using an Editor Pane (editable)
-		JEditorPane previewPane = new JEditorPane();
+		JEditorPane previewPane = new JEditorPane();	
+		scrollPane = new JScrollPane(previewPane);
 		previewPane.setBounds(30, 224, 585, 623);
+		previewPane.setSize(585, 623);
 		previewPane.setContentType("text/html");
 		previewPane.setEditable(false);
 
@@ -144,10 +156,17 @@ public class GUI_MergePreview_Frame3 extends JFrame {
 
 	}
 
-	public void displayLetter(JEditorPane pane)
-	{
+	public void displayLetter(JEditorPane pane) {
 		email = emailAndLetterStack.getLetter(emailIndex);
 		pane.setText(email);
-		contentPane.add(pane);
+		pane.setCaretPosition(0);
+		//contentPane.add(pane);
+		//scrollPane.getVerticalScrollBar().setValue(0);
+		scrollPane.getVerticalScrollBar().setUnitIncrement(10);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setVisible(true);
+        scrollPane.setBounds(30, 224, 585, 623);
+        contentPane.add(scrollPane);
 	}
 }

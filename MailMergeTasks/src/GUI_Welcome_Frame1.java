@@ -1,5 +1,3 @@
-
-
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
@@ -47,38 +45,54 @@ public class GUI_Welcome_Frame1 {
     private void initialize() {
 
         frame = new JFrame();
+        frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 18));
         frame.setBounds(450, 50, 1056, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
         JLabel lblLogin = new JLabel("Welcome!");
-        lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 30));
         lblLogin.setBounds(455, 16, 179, 63);
+        lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 30));
         frame.getContentPane().add(lblLogin);
 
         // logo
         JLabel label_1 = new JLabel("");
+        label_1.setBounds(210, 83, 630, 277);
         Image img = new ImageIcon(this.getClass().getResource("/resources/EagleMerge.png")).getImage();
         label_1.setIcon(new ImageIcon(img));
-        label_1.setBounds(210, 83, 630, 277);
         frame.getContentPane().add(label_1);
 
-        copyrightField();
+        welcome();
     }
 
-    private void copyrightField() {
+    private void welcome() {
         JLabel lblCopyright = new JLabel("Copyright \u00A9 2016 Eastern Michigan Unversity");
         lblCopyright.setBounds(392, 624, 340, 20);
         frame.getContentPane().add(lblCopyright);
+        
+        JButton btnNewButton = new JButton("Start");
+        btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 22));
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        		nextFrame();
+        	}
+        });
+        btnNewButton.setBounds(392, 449, 290, 29);
+        frame.getContentPane().add(btnNewButton);
+        
+        JLabel lblClickToGet = new JLabel("Click to get started!");
+        lblClickToGet.setFont(new Font("Tahoma", Font.PLAIN, 22));
+        lblClickToGet.setBounds(444, 401, 190, 20);
+        frame.getContentPane().add(lblClickToGet);
     }
 
 
 
     private void nextFrame() {
         // currently just goes to next frame with no validation
-        frame.dispose();
+       frame.dispose();
         //TEST
-       // GUI_DocAndExcelSelect_Frame2 DocAndExcelSelect = new GUI_DocAndExcelSelect_Frame2();
-      //  DocAndExcelSelect.setVisible(true);
+      GUI_DocAndExcelSelect_Frame2 DocAndExcelSelect = new GUI_DocAndExcelSelect_Frame2();
+      DocAndExcelSelect.setVisible(true);
     }
 }
