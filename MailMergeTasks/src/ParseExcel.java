@@ -17,7 +17,7 @@ public class ParseExcel {
 
 	private ArrayList<ArrayList<String>> excelData;
 
-	public ParseExcel(String excel){
+	public ParseExcel(){
 		excelData = new ArrayList<ArrayList<String>>();
 	}
 
