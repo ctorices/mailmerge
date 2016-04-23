@@ -1,3 +1,4 @@
+//package mail;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
@@ -176,10 +177,21 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblEmail.setBounds(358, 441, 69, 20);
 		getContentPane().add(lblEmail);
-		emailField = new JTextField();
+		
+                emailField = new JTextField();
 		emailField.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		emailField.setBounds(455, 440, 299, 26);
-		getContentPane().add(emailField);
+		//**********************************************************
+                Action action = new AbstractAction()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				authLogin();
+			}
+		};
+		emailField.addActionListener(action);
+                //**********************************************************
+                getContentPane().add(emailField);
 		emailField.setColumns(10);
 
 	}
@@ -193,7 +205,8 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		passwordField.setBounds(455, 482, 299, 26);
-		Action action = new AbstractAction()
+		//**********************************************************
+                Action action = new AbstractAction()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -201,7 +214,8 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 			}
 		};
 		passwordField.addActionListener(action);
-		getContentPane().add(passwordField);
+		//**********************************************************
+                getContentPane().add(passwordField);
 	}
 
 	private void loginButton() {
