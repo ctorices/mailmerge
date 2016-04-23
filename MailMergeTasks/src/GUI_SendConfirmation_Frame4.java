@@ -40,8 +40,8 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 	private Session session;
 	private Transport transport;
 	static GUI_SendConfirmation_Frame4 frame;
-
-
+        private Properties props = serverSettings("smtp.gmail.com", "465");
+        private JButton serverSettings;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -106,7 +106,7 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 
 		loginButton();
 
-
+                serverSettingsButton();
 	}
 
 	public void sendEmailsButton() {
@@ -160,6 +160,7 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 		contentPane.remove(loginButton);
 		contentPane.remove(lblEmail);
 		contentPane.remove(lblPassword);
+                contentPane.remove(serverSettings);
 		contentPane.revalidate(); 
 		contentPane.repaint();
 
@@ -217,10 +218,23 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 		//**********************************************************
                 getContentPane().add(passwordField);
 	}
+        private void serverSettingsButton() {
+		serverSettings = new JButton("Server");
+		
+		serverSettings.setFont(new Font("Verdana", Font.PLAIN, 18));
+		serverSettings.setBounds(455, 576, 166, 29);
+		getContentPane().add(serverSettings);
 
+		serverSettings.addActionListener((ActionEvent arg0) -> {
+                    String newHost = JOptionPane.showInputDialog("Enter Host: <Defualt is \"smtp.gmail.com\">", "smtp.gmail.com");
+                    String newPort = JOptionPane.showInputDialog("Enter Port: <Defualt is \"465\">", "465");
+                    this.props = serverSettings(newHost, newPort);
+                    //authLogin();
+		});
+	}
 	private void loginButton() {
 		loginButton = new JButton("Login");
-		// ADD EMAIL VALIDATION!!!!!!!!!!!!!!! *******************************
+		// ADD EMAIL VALIDATION!!!!!!!!!!!!!!! *************************
 		loginButton.setFont(new Font("Verdana", Font.PLAIN, 18));
 		loginButton.setBounds(455, 536, 166, 29);
 		getContentPane().add(loginButton);
@@ -229,7 +243,29 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 			authLogin();
 		});
 	}
-
+        
+        private Properties serverSettings(String newHost, String newPort) {
+            
+            
+            String [] host = {"mail.smtp.host", newHost};
+            String [] sockets = {"mail.smtp.socketFactory.port" , newPort };//Not the Cigerette
+	    String [] sslSockets = {"mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory"};
+	    String [] smtpAuth = {"mail.smtp.auth", "true"};
+	    String [] serverPort = {"mail.smtp.port", newPort};
+            Properties temp = new Properties();
+            //temp.setProperty("mail.transport.protocol", "smtp");
+            //temp.setProperty("mail.host", "smtp.live.com");
+            //temp.put("mail.smtp.starttls.enable", "true");
+           
+            temp.put(smtpAuth[0], smtpAuth[1]);
+            temp.put(host[0], host[1]);
+            temp.put(sockets[0], sockets[1]);
+            temp.put(sslSockets[0], sslSockets[1]);
+            temp.put(serverPort[0], serverPort[1]);
+            
+            //temp.put("mail.smtp.socketFactory.fallback", "false");            
+            return temp;
+        }
 	private void authLogin() {
 		//get log in info
 
@@ -242,14 +278,16 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 
 
 		//using googles SMTP server to send email's
-		Properties props = new Properties();
-		props.put("mail.smtp.host", "smtp.gmail.com");
+		
+                
+		/*
+                props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.socketFactory.port", "465");
-		props.put("mail.smtp.socketFactory.class",
-				"javax.net.ssl.SSLSocketFactory");
+		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.port", "465");
-
+                */
+                //props.list(System.out);
 		session = Session.getInstance(props,
 				new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
