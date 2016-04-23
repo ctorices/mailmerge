@@ -236,7 +236,7 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.port", "465");
 
-		session = Session.getDefaultInstance(props,
+		session = Session.getInstance(props,
 				new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(userName, pass);
