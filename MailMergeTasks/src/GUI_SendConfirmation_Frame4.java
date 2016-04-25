@@ -42,6 +42,7 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 	static GUI_SendConfirmation_Frame4 frame;
         private Properties props = serverSettings("smtp.gmail.com", "465");
         private JButton serverSettings;
+        private JButton loginWindow;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -166,7 +167,6 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 
 	}
 
-
 	private void loginField() {
 
 		lblPleaseEnterYour = new JLabel("Please enter your login credentials");
@@ -218,6 +218,23 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 		//**********************************************************
                 getContentPane().add(passwordField);
 	}
+        
+        private void serverGoBackButton() {
+            loginWindow = new JButton("Login");
+            loginWindow.setFont(new Font("Verdana", Font.PLAIN, 18));
+	    loginWindow.setBounds(455, 576, 166, 29);
+	    getContentPane().add(loginWindow);
+            
+            loginWindow.addActionListener((ActionEvent arg0) -> {
+                contentPane.remove(loginWindow);
+                serverTransitionAdd();
+                    //String newHost = JOptionPane.showInputDialog("Enter Host: <Defualt is \"smtp.gmail.com\">", "smtp.gmail.com");
+                    //String newPort = JOptionPane.showInputDialog("Enter Port: <Defualt is \"465\">", "465");
+                    //this.props = serverSettings(newHost, newPort);
+                    //authLogin();
+		});
+        }
+        
         private void serverSettingsButton() {
 		serverSettings = new JButton("Server");
 		
@@ -226,33 +243,82 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
 		getContentPane().add(serverSettings);
 
 		serverSettings.addActionListener((ActionEvent arg0) -> {
-                    String newHost = JOptionPane.showInputDialog("Enter Host: <Defualt is \"smtp.gmail.com\">", "smtp.gmail.com");
-                    String newPort = JOptionPane.showInputDialog("Enter Port: <Defualt is \"465\">", "465");
-                    this.props = serverSettings(newHost, newPort);
+                    String param1;
+                    String param2;
+                    Properties temp = new Properties();
+                    param1 = JOptionPane.showInputDialog("Enter Server Paramater 1");
+                    while(!param1.contentEquals("-1")){
+                        param2 = JOptionPane.showInputDialog("Enter Server Paramater 2");
+                        temp = serverSettingsInput(param1, param2, temp);
+                        param1 = JOptionPane.showInputDialog("Enter Server Paramater 1");
+                        
+                    }
+                    
+                    //serverTransitionRemove();
+                    //serverGoBackButton();
+                    
+                    
+                    this.props = temp;
                     //authLogin();
-		});
+		
+                });
 	}
-	private void loginButton() {
-		loginButton = new JButton("Login");
+	
+        private void loginButton() {
+		loginButton = new JButton("Login Screen");
 		// ADD EMAIL VALIDATION!!!!!!!!!!!!!!! *************************
 		loginButton.setFont(new Font("Verdana", Font.PLAIN, 18));
 		loginButton.setBounds(455, 536, 166, 29);
 		getContentPane().add(loginButton);
 
 		loginButton.addActionListener((ActionEvent arg0) -> {
-			authLogin();
+			
+                    authLogin();
+                        
 		});
 	}
         
-        private Properties serverSettings(String newHost, String newPort) {
+        private void serverTransitionRemove(){
+                contentPane.remove(emailField);
+		contentPane.remove(passwordField);
+		contentPane.remove(lblPleaseEnterYour);
+		contentPane.remove(loginButton);
+		contentPane.remove(lblEmail);
+		contentPane.remove(lblPassword);
+                contentPane.remove(serverSettings);
+		contentPane.revalidate(); 
+		contentPane.repaint();    
+        }
+        
+        private void serverTransitionAdd(){
+                contentPane.add(emailField);
+		contentPane.add(passwordField);
+		contentPane.add(lblPleaseEnterYour);
+		contentPane.add(loginButton);
+		contentPane.add(lblEmail);
+		contentPane.add(lblPassword);
+                contentPane.add(serverSettings);
+		contentPane.revalidate(); 
+		contentPane.repaint();    
+        }
+        
+        private Properties serverSettingsInput(String newHost, String newPort, Properties temp) {		
+           
+            temp.put(newHost, newPort);
             
+            return temp;
+        }
+        
+        private Properties serverSettings(String newHost, String newPort) {		
             
             String [] host = {"mail.smtp.host", newHost};
             String [] sockets = {"mail.smtp.socketFactory.port" , newPort };//Not the Cigerette
 	    String [] sslSockets = {"mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory"};
 	    String [] smtpAuth = {"mail.smtp.auth", "true"};
 	    String [] serverPort = {"mail.smtp.port", newPort};
+            
             Properties temp = new Properties();
+            
             //temp.setProperty("mail.transport.protocol", "smtp");
             //temp.setProperty("mail.host", "smtp.live.com");
             //temp.put("mail.smtp.starttls.enable", "true");
@@ -263,7 +329,8 @@ public class GUI_SendConfirmation_Frame4 extends JFrame {
             temp.put(sslSockets[0], sslSockets[1]);
             temp.put(serverPort[0], serverPort[1]);
             
-            //temp.put("mail.smtp.socketFactory.fallback", "false");            
+            //temp.put("mail.smtp.socketFactory.fallback", "false"); 
+            
             return temp;
         }
 	private void authLogin() {
